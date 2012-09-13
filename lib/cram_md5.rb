@@ -20,9 +20,10 @@ module CramMd5
       ret = ''
       while (n - 1 >= 0)
         n = n - 1
+      
+        ret = ret + ITOA64[v & 0x3f]
+        v = v >> 6
       end
-      ret = ret + ITOA64[v & 0x3f]
-      v = v >> 6
       ret
     end
 
@@ -48,15 +49,18 @@ module CramMd5
 
       pl = pw.length
       while(pl>0)
+        if pl > 16
+          ctx = ctx + final[0..15]
+        else
+          ctx = ctx + final[0..pl-1]
+        end
         pl -= 16
-        ctx += final[0..(pl > 15 ? 15 : pl)]
       end
-      puts "ctx :" + ctx
       # Now the 'weird' xform (??)
 
       i = pw.length
-      while(i!=0)
-        if i & 1
+      while(i>0)
+        if (i & 1) > 0
           ctx = ctx + 0.chr  #if ($i & 1) { $ctx->add(pack("C", 0)); }
         else
           ctx = ctx + pw[0]
@@ -65,27 +69,26 @@ module CramMd5
       end
 
       final = Digest::MD5.digest(ctx)
-      puts "final2:" + final + "\n"
       
       # The following is supposed to make
       # things run slower. 
 
       # my question: WTF???
 
-      (1..1000).each do |i| 
+      (0..999).each do |i| 
         ctx1 = ''
-        if i & 1
+        if (i & 1) > 0
             ctx1 = ctx1 + pw
         else
             ctx1 = ctx1 + final[0..15]
         end
 
-        ctx1 = ctx1 + salt if i % 3
+        ctx1 = ctx1 + salt if (i % 3) > 0
             
 
-        ctx1 = ctx1 + pw if i % 7
+        ctx1 = ctx1 + pw if (i % 7) > 0
 
-        if i & 1
+        if (i & 1) > 0
           ctx1 = ctx1 + final[0..15]
         else
           ctx1 = ctx1 + pw
@@ -93,7 +96,6 @@ module CramMd5
               
         final = Digest::MD5.digest(ctx1)
       end
-      puts "final3:" + final + "\n"
       # Final xform
                                   
       passwd = ''
