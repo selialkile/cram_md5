@@ -37,6 +37,7 @@ module CramMd5
 
     # salt can have up to 8 characters:
     salt = salt[0..7]
+    salt = rand_str(8) if salt == ""
 
     ctx = pw + magic + salt
 
@@ -109,5 +110,20 @@ module CramMd5
 
     magic + salt + '$' + passwd
   end
+
+  def self.rand_str(max_length = 32, chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890')
+
+    chars_length = (chars.length - 1);
+
+    string = chars[rand(chars_length)];
+    i=0
+    while(string.length<max_length)
+      c = chars[rand(chars_length)];
+     
+      string += c if (c != string[string.length - 1])
+    end
+   
+    string
+ end
 
 end

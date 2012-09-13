@@ -21,6 +21,7 @@ Or install it yourself as:
 ## Usage
 
   cryptedpassword = CramMd5::md5crypt_unix   (password [, salt [, magicstring ])
+
   apachepassword  = CramMd5::md5crypt_apache (password [, salt])
 
 ## Contributing
