@@ -2,7 +2,6 @@
 require 'digest/md5'
   
 module CramMd5
-  VERSION = "0.0.1"
   MAGIC = '$1$'
   ITOA64 = './0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 
