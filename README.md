@@ -1,6 +1,8 @@
 # CramMd5
 
-TODO: Write a gem description
+  unix_md5_crypt() provides a crypt()-compatible interface to the
+  rather old MD5-based crypt() function found in modern operating systems
+  using old and solid libs.
 
 ## Installation
 
@@ -18,7 +20,8 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+  cryptedpassword = CramMd5::md5crypt_unix   (password [, salt [, magicstring ])
+  apachepassword  = CramMd5::md5crypt_apache (password [, salt])
 
 ## Contributing
 
@@ -27,3 +30,4 @@ TODO: Write usage instructions here
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+6. Execure the "THE BEER-WARE LICENSE".

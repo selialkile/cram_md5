@@ -4,8 +4,11 @@ require File.expand_path('../lib/cram_md5/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Thiago Coutinho"]
   gem.email         = ["thiago.coutinho@locaweb.com.br"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{
+  unix_md5_crypt() provides a crypt()-compatible interface to the
+  rather old MD5-based crypt() function found in modern operating systems
+  using old and solid libs.}
+  gem.summary       = %q{ unix_md5_crypt CRAM-MD5 or Crypt MD5 }
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
