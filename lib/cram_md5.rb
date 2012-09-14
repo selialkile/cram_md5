@@ -26,7 +26,7 @@ module CramMd5
   #@note For compare, use de original password and the salt of encrypted password.
   #@return [string] crypt pass
 
-  def self.unix_md5_crypt(pw, salt, magic=nil)
+  def self.unix_md5_crypt(pw, salt="", magic=nil)
     
     if magic==nil
       magic = MAGIC
