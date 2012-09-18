@@ -11,7 +11,16 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{ unix_md5_crypt CRAM-MD5 or Crypt MD5 }
   gem.homepage      = ""
 
-  gem.files         = `git ls-files`.split($\)
+  gem.files         = [
+                        "Gemfile",
+                        "LICENSE",
+                        "README.md",
+                        "Rakefile",
+                        "cram_md5.gemspec",
+                        "lib/cram_md5.rb",
+                        "lib/cram_md5/version.rb"
+                      ]
+
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "cram_md5"
