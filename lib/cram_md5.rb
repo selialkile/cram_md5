@@ -15,8 +15,20 @@ module CramMd5
     end
     ret
   end
+  
+  # Returns Salt from a password
+  # 
+  # @param [String] password An unix md5 crypted password
+  # @return [String] salt The Sal from the crypted password
+  # @return [Nil] if the password is invalid
+  def self.salt(password)
+    if password =~ /\$.+\$.+\$/ and password.length > 30
+      return $1 if password =~ /\$.+\$(.+)\$/
+    end
+    nil
+  end
 
-  def self.apache_md5_crypt (pw, salt)
+  def self.apache_md5_crypt(pw, salt)
     self.unix_md5_crypt(pw, salt, '$apr1$')
   end
 
@@ -25,7 +37,6 @@ module CramMd5
   #@params [string] magic
   #@note For compare, use de original password and the salt of encrypted password.
   #@return [string] crypt pass
-
   def self.unix_md5_crypt(pw, salt="", magic=nil)
     
     if magic==nil
