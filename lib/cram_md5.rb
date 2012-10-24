@@ -10,7 +10,7 @@ module CramMd5
     while (n - 1 >= 0)
       n = n - 1
     
-      ret = ret + ITOA64[v & 0x3f]
+      ret = ret + ITOA64[v & 0x3f].chr
       v = v >> 6
     end
     ret
@@ -70,7 +70,7 @@ module CramMd5
       if (i & 1) > 0
         ctx = ctx + 0.chr  #if ($i & 1) { $ctx->add(pack("C", 0)); }
       else
-        ctx = ctx + pw[0]
+        ctx = ctx + pw[0].chr
       end
       i = i >> 1
     end
@@ -126,10 +126,10 @@ module CramMd5
 
     chars_length = (chars.length - 1);
 
-    string = chars[rand(chars_length)];
+    string = chars[rand(chars_length)].chr;
     i=0
     while(string.length<max_length)
-      c = chars[rand(chars_length)];
+      c = chars[rand(chars_length)].chr;
      
       string += c if (c != string[string.length - 1])
     end
