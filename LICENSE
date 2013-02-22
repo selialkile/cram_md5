@@ -18,8 +18,8 @@ Last edit: Tue, 13 September 2012 17:05:28 -0300 GMT
 
 USAGE
 
-  cryptedpassword = CramMd5::md5crypt_unix   (password [, salt [, magicstring ])
-  apachepassword  = CramMd5::md5crypt_apache (password [, salt])
+  cryptedpassword = CramMd5::unix_md5_crypt   (password [, salt [, magicstring ])
+  apachepassword  = CramMd5::apache_md5_crypt (password [, salt])
 
 DESCRIPTION
 

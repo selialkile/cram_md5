@@ -3,7 +3,7 @@ require File.expand_path('../lib/cram_md5/version', __FILE__)
 
 Gem::Specification.new do |gem|
   gem.authors       = ["Thiago Coutinho"]
-  gem.email         = ["thiago.coutinho@locaweb.com.br"]
+  gem.email         = ["thiago@osfeio.com"]
   gem.description   = %q{
   unix_md5_crypt() provides a crypt()-compatible interface to the
   rather old MD5-based crypt() function found in modern operating systems
